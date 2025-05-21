@@ -1,0 +1,340 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未知变量科技官网</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <!-- 引入粒子背景效果库 -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- 配置Tailwind自定义颜色和字体 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00f7ff', // 主色调：科技蓝
+                        secondary: '#00ff9d', // 辅助色：亮绿色
+                        dark: '#121212', // 背景色：深黑色
+                        'dark-light': '#1e1e1e', // 次要背景色：稍亮的黑色
+                        'text-light': '#e0e0e0', // 浅色文本
+                        'text-gray': '#9e9e9e' // 灰色文本
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+            }
+            .glow {
+                box-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
+            }
+            .hover-glow:hover {
+                box-shadow: 0 0 15px rgba(0, 247, 255, 0.7);
+            }
+            .bg-grid {
+                background-image: linear-gradient(rgba(0, 247, 255, 0.1) 1px, transparent 1px),
+                                  linear-gradient(90deg, rgba(0, 247, 255, 0.1) 1px, transparent 1px);
+                background-size: 20px 20px;
+            }
+        }
+    </style>
+    <!-- 引入自定义样式 -->
+    <link href="style.css" rel="stylesheet">
+</head>
+<body class="bg-dark text-text-light font-inter min-h-screen flex flex-col">
+    <!-- 粒子背景容器 -->
+    <div id="particles-js" class="fixed inset-0 z-0 opacity-30"></div>
+
+    <!-- 主容器 -->
+    <div class="relative z-10 flex flex-col min-h-screen">
+        <!-- 导航栏 -->
+        <header class="bg-dark-light/80 backdrop-blur-md sticky top-0 z-50 border-b border-primary/20 transition-all duration-300">
+            <div class="container mx-auto px-4 py-3">
+                <nav class="flex items-center justify-between">
+                    <!-- Logo - 使用本地图片 -->
+                    <a href="#home" class="flex items-center space-x-2 text-primary hover:text-shadow transition-all duration-300">
+                        <img src="./static/logo/logo.jpg" alt="未知变量嵌入式开发教程" class="h-10 w-auto rounded">
+                        <span class="text-xl font-bold">未知变量</span>
+                    </a>
+
+                    <!-- 桌面导航 -->
+                    <ul class="hidden md:flex items-center space-x-8">
+                        <li><a href="#home" class="nav-link text-white hover:text-primary transition-colors duration-300" data-page="home">首页</a></li>
+                        <li><a href="#resources" class="nav-link text-white hover:text-primary transition-colors duration-300" data-page="resources">资料获取</a></li>
+                        <li><a href="#about" class="nav-link text-white hover:text-primary transition-colors duration-300" data-page="about">关于</a></li>
+                    </ul>
+
+                    <!-- 移动端菜单按钮 -->
+                    <button class="md:hidden text-white focus:outline-none" id="menu-toggle">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </nav>
+
+                <!-- 移动端导航菜单 -->
+                <div class="md:hidden hidden" id="mobile-menu">
+                    <ul class="py-4 space-y-3">
+                        <li><a href="#home" class="block py-2 px-4 text-white hover:bg-primary/20 rounded-md transition-colors duration-300 mobile-nav-link" data-page="home">首页</a></li>
+                        <li><a href="#resources" class="block py-2 px-4 text-white hover:bg-primary/20 rounded-md transition-colors duration-300 mobile-nav-link" data-page="resources">资料获取</a></li>
+                        <li><a href="#about" class="block py-2 px-4 text-white hover:bg-primary/20 rounded-md transition-colors duration-300 mobile-nav-link" data-page="about">关于</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- 主要内容 -->
+        <main class="flex-grow container mx-auto px-4 py-8">
+            <!-- 首页 -->
+            <div id="home" class="page active">
+                <!-- 欢迎区域 -->
+                <section class="py-16 text-center">
+                    <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold mb-6 text-primary text-shadow">欢迎探索未知变量 X</h1>
+                    <p class="text-[clamp(1rem,2vw,1.25rem)] text-text-gray max-w-3xl mx-auto mb-10">
+                        提供专业的嵌入式系统开发教程和资料，帮助你快速掌握LVGL、ESP32、STM32等热门技术
+                    </p>
+                    <a href="https://space.bilibili.com/3546857808595431" target="_blank" class="inline-block bg-primary hover:bg-primary/80 text-dark px-8 py-3 rounded-md font-semibold transition-all duration-300 hover:glow transform hover:-translate-y-1">
+                        查看教程 <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                </section>
+
+                <!-- 轮播图 -->
+                <section class="py-10 bg-dark-light/50 rounded-xl overflow-hidden mb-16">
+                    <div class="carousel relative">
+                        <div class="carousel-inner flex transition-transform duration-500 ease-in-out">
+                            <!-- 轮播项1 -->
+                            <div class="carousel-item w-full md:w-1/3 flex-shrink-0 px-4 py-6">
+                                <div class="bg-dark rounded-lg p-6 h-full border border-primary/20 hover:border-primary/50 transition-all duration-300 hover-glow">
+                                    <div class="h-48 bg-primary/10 rounded-md mb-4 overflow-hidden">
+                                        <img src="https://picsum.photos/800/400?random=1" alt="LVGL教程" class="w-full h-full object-cover">
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-2 text-primary">LVGL教程</h3>
+                                    <p class="text-text-gray">学习如何在Windows+vscode环境下轻松开发LVGL，掌握图形界面开发技能。</p>
+                                </div>
+                            </div>
+
+                            <!-- 轮播项2 -->
+                            <div class="carousel-item w-full md:w-1/3 flex-shrink-0 px-4 py-6">
+                                <div class="bg-dark rounded-lg p-6 h-full border border-primary/20 hover:border-primary/50 transition-all duration-300 hover-glow">
+                                    <div class="h-48 bg-primary/10 rounded-md mb-4 overflow-hidden">
+                                        <img src="https://picsum.photos/800/400?random=2" alt="ESP32教程" class="w-full h-full object-cover">
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-2 text-primary">ESP32教程</h3>
+                                    <p class="text-text-gray">从入门到精通，全面掌握ESP32开发，包括环境搭建、项目开发和优化技巧。</p>
+                                </div>
+                            </div>
+
+                            <!-- 轮播项3 -->
+                            <div class="carousel-item w-full md:w-1/3 flex-shrink-0 px-4 py-6">
+                                <div class="bg-dark rounded-lg p-6 h-full border border-primary/20 hover:border-primary/50 transition-all duration-300 hover-glow">
+                                    <div class="h-48 bg-primary/10 rounded-md mb-4 overflow-hidden">
+                                        <img src="https://picsum.photos/800/400?random=3" alt="STM32教程" class="w-full h-full object-cover">
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-2 text-primary">STM32教程</h3>
+                                    <p class="text-text-gray">深入学习STM32微控制器开发，从基础到高级应用，打造高效嵌入式系统。</p>
+                                </div>
+                            </div>
+
+                            <!-- 轮播项4 -->
+                            <div class="carousel-item w-full md:w-1/3 flex-shrink-0 px-4 py-6">
+                                <div class="bg-dark rounded-lg p-6 h-full border border-primary/20 hover:border-primary/50 transition-all duration-300 hover-glow">
+                                    <div class="h-48 bg-primary/10 rounded-md mb-4 overflow-hidden">
+                                        <img src="https://picsum.photos/800/400?random=4" alt="嵌入式系统教程" class="w-full h-full object-cover">
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-2 text-primary">嵌入式系统教程</h3>
+                                    <p class="text-text-gray">全面讲解嵌入式系统设计与开发，包括RTOS、驱动开发和系统优化。</p>
+                                </div>
+                            </div>
+
+                            <!-- 轮播项5 -->
+                            <div class="carousel-item w-full md:w-1/3 flex-shrink-0 px-4 py-6">
+                                <div class="bg-dark rounded-lg p-6 h-full border border-primary/20 hover:border-primary/50 transition-all duration-300 hover-glow">
+                                    <div class="h-48 bg-primary/10 rounded-md mb-4 overflow-hidden">
+                                        <img src="https://picsum.photos/800/400?random=5" alt="RTOS教程" class="w-full h-full object-cover">
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-2 text-primary">RTOS教程</h3>
+                                    <p class="text-text-gray">学习实时操作系统原理与应用，掌握FreeRTOS、uC/OS等主流RTOS。</p>
+                                </div>
+                            </div>
+
+                            <!-- 轮播项6 -->
+                            <div class="carousel-item w-full md:w-1/3 flex-shrink-0 px-4 py-6">
+                                <div class="bg-dark rounded-lg p-6 h-full border border-primary/20 hover:border-primary/50 transition-all duration-300 hover-glow">
+                                    <div class="h-48 bg-primary/10 rounded-md mb-4 overflow-hidden">
+                                        <img src="https://picsum.photos/800/400?random=6" alt="物联网开发" class="w-full h-full object-cover">
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-2 text-primary">物联网开发</h3>
+                                    <p class="text-text-gray">探索物联网技术，学习MQTT、CoAP等协议，开发智能硬件应用。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 轮播控制按钮 -->
+                        <button class="prev absolute top-1/2 left-2 -translate-y-1/2 bg-dark-light/80 text-primary w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition-all duration-300">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <button class="next absolute top-1/2 right-2 -translate-y-1/2 bg-dark-light/80 text-primary w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition-all duration-300">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <!-- 轮播指示器 - 添加到6个 -->
+                        <div class="flex justify-center mt-6 space-x-2">
+                            <button class="indicator w-3 h-3 rounded-full bg-primary"></button>
+                            <button class="indicator w-3 h-3 rounded-full bg-text-gray/50"></button>
+                            <button class="indicator w-3 h-3 rounded-full bg-text-gray/50"></button>
+                            <button class="indicator w-3 h-3 rounded-full bg-text-gray/50"></button>
+                            <button class="indicator w-3 h-3 rounded-full bg-text-gray/50"></button>
+                            <button class="indicator w-3 h-3 rounded-full bg-text-gray/50"></button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 最新动态 -->
+                <section class="py-10 bg-dark-light/50 rounded-xl">
+                    <h2 class="text-2xl font-bold mb-6 text-primary">最新动态</h2>
+                    <div class="space-y-4">
+                        <div class="p-4 border-l-4 border-primary bg-dark rounded-lg hover:bg-dark-light transition-all duration-300">
+                            <h3 class="font-bold mb-1">ESP32教程更新</h3>
+                            <p class="text-text-gray">我们更新了ESP32教程，新增了WiFi和蓝牙开发章节，帮助你快速掌握无线通信技术。</p>
+                            <span class="text-xs text-text-gray/70">2025年5月10日</span>
+                        </div>
+                        <div class="p-4 border-l-4 border-secondary bg-dark rounded-lg hover:bg-dark-light transition-all duration-300">
+                            <h3 class="font-bold mb-1">LVGL视频教程上线</h3>
+                            <p class="text-text-gray">我们在Bilibili发布了全新的LVGL视频教程，手把手教你实现Windows+vscode环境开发。</p>
+                            <span class="text-xs text-text-gray/70">2025年4月25日</span>
+                        </div>
+                        <div class="p-4 border-l-4 border-primary bg-dark rounded-lg hover:bg-dark-light transition-all duration-300">
+                            <h3 class="font-bold mb-1">STM32资料更新</h3>
+                            <p class="text-text-gray">我们更新了STM32教程资料，提供更详细的开发指南和示例代码，适合初学者和进阶开发者。</p>
+                            <span class="text-xs text-text-gray/70">2025年4月10日</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 资料获取页 -->
+            <div id="resources" class="page">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <!-- 分类导航 -->
+                    <div class="md:w-1/4 bg-dark-light/50 rounded-xl p-6 h-fit">
+                        <h2 class="text-xl font-bold mb-4 text-primary">教程分类</h2>
+                        <ul id="category-nav" class="space-y-2">
+                            <!-- 分类将通过JavaScript动态生成 -->
+                        </ul>
+                    </div>
+
+                    <!-- 教程列表 -->
+                    <div class="md:w-3/4">
+                        <div class="bg-dark-light/50 rounded-xl p-6 mb-6">
+                            <h2 id="category-title" class="text-2xl font-bold mb-4 text-primary">LVGL教程</h2>
+                            <p class="text-text-gray mb-6">选择左侧的教程分类查看相关资料</p>
+                            <ul id="tutorial-list" class="space-y-4">
+                                <!-- 教程列表将通过JavaScript动态生成 -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 关于页面 -->
+            <div id="about" class="page">
+                <div class="bg-dark-light/50 rounded-xl p-6">
+                    <h2 class="text-2xl font-bold mb-6 text-primary">关于我们</h2>
+
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold mb-3 text-primary">我们的使命</h3>
+                            <p class="text-text-gray">
+                                我们致力于提供高质量的嵌入式开发教程和资料，帮助开发者快速掌握嵌入式系统开发技能，
+                                无论是初学者还是有经验的工程师，都能从中受益。我们的教程涵盖了从基础到高级的各个层面，
+                                包括LVGL图形界面开发、ESP32物联网开发、STM32微控制器应用等热门技术领域。
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold mb-3 text-primary">我们的团队</h3>
+                            <p class="text-text-gray">
+                                我们的教程由经验丰富的嵌入式系统工程师和软件开发人员编写，他们拥有多年的行业经验，
+                                熟悉各种嵌入式开发工具和技术。我们不仅提供理论知识，还注重实践操作，通过大量的实例和项目，
+                                帮助你将所学知识应用到实际开发中。
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold mb-3 text-primary">教程特点</h3>
+                            <ul class="list-disc pl-5 space-y-2 text-text-gray">
+                                <li>深入浅出，适合各阶段开发者</li>
+                                <li>提供完整的代码示例和项目实战</li>
+                                <li>持续更新，紧跟技术发展趋势</li>
+                                <li>提供详细的资料和教程，方便学习和复习</li>
+                                <li>专业的技术支持，解答学习过程中的疑问</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold mb-3 text-primary">联系方式</h3>
+                            <p class="text-text-gray">
+                                如果你有任何问题或建议，欢迎通过以下方式联系我们：
+                            </p>
+                            <ul class="list-disc pl-5 space-y-2 text-text-gray">
+                                <li>邮箱：<a href="mailto:support@embedded-tutorials.com" class="text-primary hover:underline">support@embedded-tutorials.com</a></li>
+                                <li>GitHub：<a href="https://github.com/embedded-tutorials" target="_blank" class="text-primary hover:underline">https://github.com/embedded-tutorials</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="bg-dark-light/80 border-t border-primary/20 py-6">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <p class="text-text-gray text-sm">&copy; 2023 ~ 2025 未知变量（深圳）有限公司. 保留所有权利.</p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-text-gray hover:text-primary transition-colors duration-300">
+                            <i class="fa-brands fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-text-gray hover:text-primary transition-colors duration-300">
+                            <i class="fa-brands fa-bilibili text-xl"></i>
+                        </a>
+                        <a href="#" class="text-text-gray hover:text-primary transition-colors duration-300">
+                            <i class="fa-brands fa-weixin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 教程模态框 -->
+    <div id="tutorial-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 hidden">
+        <div class="bg-dark-light rounded-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto border border-primary/30 shadow-lg">
+            <div class="p-6 border-b border-primary/20 flex justify-between items-center">
+                <h3 id="modal-title" class="text-xl font-bold text-primary"></h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div id="modal-body" class="p-6 space-y-6">
+                <!-- 模态框内容将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

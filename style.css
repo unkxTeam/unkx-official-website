@@ -1,0 +1,187 @@
+/* style.css */
+/* 基础样式 */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Inter', sans-serif;
+}
+
+/* 页面切换样式 */
+.page {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 导航样式 */
+.nav-link.active {
+    color: #00f7ff !important;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #e0e0e0;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+}
+
+.sidebar-link:hover {
+    background-color: rgba(0, 247, 255, 0.1);
+    color: #00f7ff;
+}
+
+.sidebar-link.active {
+    background-color: rgba(0, 247, 255, 0.2);
+    color: #00f7ff;
+}
+
+/* 教程列表样式 */
+.tutorial-item {
+    padding: 1.5rem;
+    background-color: #1e1e1e;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 247, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tutorial-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 247, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 247, 255, 0.2);
+}
+
+.tutorial-item h3 {
+    color: #00f7ff;
+    margin-bottom: 0.5rem;
+}
+
+/* 模态框样式 */
+.link-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 247, 255, 0.1);
+}
+
+.link-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.link-item h4 {
+    color: #00f7ff;
+    margin-bottom: 0.5rem;
+}
+
+.link-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.link-anchor {
+    color: #00f7ff;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    max-width: calc(100% - 200px);
+}
+
+.link-anchor:hover {
+    text-decoration: underline;
+}
+
+.button-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.base-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.watch-btn {
+    background-color: #ff0000;
+    color: white;
+}
+
+.watch-btn:hover {
+    background-color: #cc0000;
+}
+
+.jump-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.jump-btn:hover {
+    background-color: #0056b3;
+}
+
+.ali-btn {
+    background-color: #1677ff;
+    color: white;
+}
+
+.ali-btn:hover {
+    background-color: #0e57c5;
+}
+
+.copy-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.copy-btn:hover {
+    background-color: #5a6268;
+}
+
+/* 轮播图样式 */
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    flex-shrink: 0;
+}
+
+.indicator {
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background-color: #00f7ff;
+    transform: scale(1.2);
+}
+
+/* 移动端菜单 */
+#mobile-menu {
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
